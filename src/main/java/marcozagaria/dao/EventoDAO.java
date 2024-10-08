@@ -32,4 +32,14 @@ public class EventoDAO {
     public Evento getById(long id) { //metodo per cercare tramite id
         return entityManager.find(Evento.class, id);
     }
+
+    public void delete(long id) {
+        Evento eventoId = this.getById(id);
+        EntityTransaction transazione = entityManager.getTransaction();
+        transazione.begin();
+        entityManager.remove(eventoId);
+        transazione.commit();
+        System.out.println("l'evento " + eventoId.getTitolo() + " è stato cancellato");
+
+    }
 }
