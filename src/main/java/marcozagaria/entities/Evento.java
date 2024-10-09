@@ -1,14 +1,16 @@
 package marcozagaria.entities;
 
 import jakarta.persistence.*;
+import marcozagaria.Enum.EventType;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "eventi")
 public class Evento {
     @Id //per indicare la colonna primaria
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // per generare in automatico gli id
+    @GeneratedValue(strategy = GenerationType.AUTO) // per generare in automatico gli id
     private long id;
     @Column(name = "titolo", nullable = false)// per creare ogni singola colonna
     private String titolo;
@@ -21,6 +23,11 @@ public class Evento {
     private EventType eventType;
     @Column(name = "numero_massimo_partecipanti", nullable = false)
     private int numeroMassimoPartecipanti;
+    @OneToOne
+    @JoinColumn(name = "location_id")
+    private Location location;
+    @OneToMany(mappedBy = "evento")
+    private List<Partecipazione> partecipazioni;
 
     public Evento() { // OBBLIGATORIO nelle entities il costruttore vuoto! Serve a JPA per poterci fornire degli oggetti
 

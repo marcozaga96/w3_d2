@@ -1,4 +1,4 @@
-package marcozagaria.entities;
+package marcozagaria.Enum;
 
 public enum EventType {
     PUBBLICO, PRIVATO
