@@ -19,11 +19,11 @@ public class PartecipazioneDAO {
         System.out.println("nuova partecipazione salvata con successo");
     }
 
-    public Partecipazione getById(long id) {
+    public Partecipazione getById(String id) {
         return entityManager.find(Partecipazione.class, id);
     }
 
-    public void delete(long id) {
+    public void delete(String id) {
         Partecipazione partecipazioneId = this.getById(id);
         EntityTransaction transazione = entityManager.getTransaction();
         transazione.begin();

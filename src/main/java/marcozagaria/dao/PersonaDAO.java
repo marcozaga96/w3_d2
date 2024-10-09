@@ -19,11 +19,11 @@ public class PersonaDAO {
         System.out.println("nuova persona " + newPersona.getNome() + " salvata con successo");
     }
 
-    public Persona getById(long id) {
+    public Persona getById(String id) {
         return entityManager.find(Persona.class, id);
     }
 
-    public void delete(long id) {
+    public void delete(String id) {
         Persona personaId = this.getById(id);
         EntityTransaction transazione = entityManager.getTransaction();
         transazione.begin();

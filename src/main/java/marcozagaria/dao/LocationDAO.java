@@ -19,11 +19,11 @@ public class LocationDAO {
         System.out.println("nuova location " + newLocation.getNome() + " salvata con successo");
     }
 
-    public Location getById(long id) {
+    public Location getById(String id) {
         return entityManager.find(Location.class, id);
     }
 
-    public void delete(long id) {
+    public void delete(String id) {
         Location locationId = this.getById(id);
         EntityTransaction transazione = entityManager.getTransaction();
         transazione.begin();
